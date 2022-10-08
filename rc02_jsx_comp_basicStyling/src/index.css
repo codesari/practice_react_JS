@@ -7,3 +7,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+header {
+  /* border: 2px solid red; */
+  background-color: chartreuse;
+  color: blue;
+  text-align: center;
+  padding: 2rem;
+}
+
+footer {
+  background-color: orangered;
+}
