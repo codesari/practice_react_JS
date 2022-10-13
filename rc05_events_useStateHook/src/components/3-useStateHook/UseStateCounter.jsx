@@ -4,7 +4,14 @@ import { useState } from "react";
 const UseStateCounter = () => {
   const [count, setCount] = useState(0); // 0 baslangic degeri. // ? arr destruction..
 
-  //?
+  //? UseState Object tanimliyorum
+
+  const [person, setPerson] = useState({
+    name: "Ahmet",
+    surname: "Sari",
+    age: 30,
+  });
+  console.log(person);
 
   const inc = () => {
     setCount(count + 1);
@@ -12,6 +19,14 @@ const UseStateCounter = () => {
   const dec = () => {
     if (count == 0) return;
     setCount(count - 1);
+  };
+
+  const incAge = () => {
+    //! bu seilde primitive atama yapıldıgında object yapısı bozuldu.yani object yapiya primitive bir degisken vermis olduk.Cozum : objenin üzerine yine obje ile yazmak lazım
+    // setPerson(person.age + 1);
+    // setPerson({ age: person.age + 1 });
+    //! bu sekilde yaparsak da sadece age key'ini basar diger keyleri basmaz.bunun cozumu icin spread operatoru kullanıyoruz (...)
+    setPerson({ ...person, age: person.age + 1 });
   };
   return (
     <div className="counter-div mt-4 text-center">
@@ -37,6 +52,12 @@ const UseStateCounter = () => {
       </section>
       <section>
         <h1>USESTATE OBJECT</h1>
+        <h2>{person.name}</h2>
+        <h2>{person.surname}</h2>
+        <h2>{person.age}</h2>
+        <button onClick={incAge} className="btn btn-info">
+          Inc Age
+        </button>
       </section>
     </div>
   );
