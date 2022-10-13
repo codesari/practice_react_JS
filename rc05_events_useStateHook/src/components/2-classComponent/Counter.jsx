@@ -41,6 +41,8 @@
 
 // export default Counter;
 
+//? ******** COURSE REPETİTİON *************
+
 import { Component } from "react";
 
 class Counter extends Component {
@@ -48,9 +50,23 @@ class Counter extends Component {
     super(props);
 
     this.state = {
-      count: 0,
+      //* burada if'leri kullanamadıgımız icin short circiut statementları bilmemiz lazım
+      count: props.value || 0,
     };
+    this.increment = this.increment.bind(this);
   }
+  increment() {
+    // state in degerini degistirmek icin setState kullanmak gerekiyor.(constructor un icinde baslangic degeri vermek haric)
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  // ? arrow fonk. kullanıldıgı zaman bind yapmaya gerek kalmıyor.Arrow fonk. ortaya cikma sebebi aslında budur.
+  decrement = () => {
+    this.setState({
+      count: this.state.count - 1,
+    });
+  };
   render() {
     return (
       <div className="counter-div mt-4 text-center">
@@ -58,8 +74,12 @@ class Counter extends Component {
         {/* count degiskenin component icinde oldugu icin this ile erisiyoruz.ayrıca state'in icinde oldugu icin de this.state.count ile ulasabiliyoruz. */}
         <h2 className="display-5">Count : {this.state.count}</h2>
         <div className="button">
-          <button className="btn btn-success">Increment</button>
-          <button className="btn btn-danger">Decrement</button>
+          <button className="btn btn-success" onClick={this.increment}>
+            Increment
+          </button>
+          <button className="btn btn-danger" onClick={this.decrement}>
+            Decrement
+          </button>
           <button className="btn btn-warning">Reset</button>
         </div>
       </div>
