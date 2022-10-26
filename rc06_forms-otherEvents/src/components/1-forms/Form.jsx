@@ -14,13 +14,14 @@ const Form = () => {
     console.log("submitted");
     // alert'i sanki backend'e gönderiyormus gibi kullandik
     alert(`username :${username}`);
-    // form resetleme
+    // form resetlemeyi manuel olarak yapıyoruz cünkü form submit edildiginde tüm sayfa yenileniyor.bu react ortaminda cok istemedigimiz birsey.bunun icin prevent default kullanıp ,formu biz manuel olarak resetliyoruz.
     setUsername("");
     setEmail("");
     setPassword("");
   };
   const handleUserName = (e) => {
     console.log(e.target.value);
+    // inputa girilen her degeri anlik olarak konsola basar
     setUsername(e.target.value);
   };
   return (
@@ -36,6 +37,7 @@ const Form = () => {
           id="username"
           onChange={handleUserName}
           value={username}
+          // username state bir degisken.Bu yüzden onChange ile state'ti degistirmemiz gerekiyor.İnline olarak bir callback fonk. da yazabilirdik.
         />
       </div>
       <div className="mb-3">
@@ -46,6 +48,7 @@ const Form = () => {
           type="email"
           className="form-control"
           id="email"
+          // inline olarak callback fonk() seklinde de yapabiliriz
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />

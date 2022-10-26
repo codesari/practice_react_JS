@@ -31,8 +31,8 @@ function App() {
         <Person name={person.name} img={person.img} tel={person.tel} />
       ))}
 
-      <Person name={data[0].name} img={data[0].img} tel={data[0].tel} />
-      <Person name={data[1].name} img={data[1].img} tel={data[1].tel} />
+      {/* <Person name={data[0].name} img={data[0].img} tel={data[0].tel} />
+      <Person name={data[1].name} img={data[1].img} tel={data[1].tel} /> */}
     </>
   );
 }
